@@ -155,13 +155,13 @@ a.socialIcon:hover,
                   {% csrf_token %}
                     <h1>РЕГИСТРАЦИЯ КЛИЕНТА</h1>
                     <p class="text-muted"> Пожалуйста, введите свои данные, чтобы создать учетную запись!</p>
-                      {% render_field userForm.first_name class="form-control" placeholder="First Name" %}
-                        {% render_field userForm.last_name class="form-control" placeholder="Last Name" %}
-                          {% render_field userForm.username class="form-control" placeholder="Username" %}
-                            {% render_field userForm.password class="form-control" placeholder="Password" %}
-                              {% render_field customerForm.address class="form-control" placeholder="Address" %}
-                                {% render_field customerForm.mobile class="form-control" placeholder="Mobile" %}
-                                  {% render_field customerForm.profile_pic class="form-control" placeholder="Profile pic" %}
+                      {% render_field userForm.first_name class="form-control" placeholder="Имя" %}
+                        {% render_field userForm.last_name class="form-control" placeholder="Фамилия" %}
+                          {% render_field userForm.username class="form-control" placeholder="Имя пользователя" %}
+                            {% render_field userForm.password class="form-control" placeholder="Пароль" %}
+                              {% render_field customerForm.address class="form-control" placeholder="Адрес" %}
+                                {% render_field customerForm.mobile class="form-control" placeholder="Мобильный телефон" %}
+                                  {% render_field customerForm.profile_pic class="form-control" placeholder="Изображение профиля" %}
 
                      <input type="submit" name="" value="Create">
 
