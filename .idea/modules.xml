@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/vehicleservicemanagement-master.iml" filepath="$PROJECT_DIR$/.idea/vehicleservicemanagement-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/autoup.iml" filepath="$PROJECT_DIR$/.idea/autoup.iml" />
     </modules>
   </component>
 </project>

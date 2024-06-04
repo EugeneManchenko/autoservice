@@ -2,70 +2,66 @@
 {% load widget_tweaks %}
 {% block content %}
 <head>
-  <style media="screen">
-    input[type=text], select,input[type=number] ,input[type=password], textarea{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+    <style media="screen">
+        input[type=text], select,input[type=number] ,input[type=password], textarea{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
 
-  input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+      input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
 
-  input[type=submit]:hover {
-    background-color: #45a049;
-  }
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
 
 
-  </style>
+    </style>
 
 
 </head>
 
 <br><br><br><br><br>
-<h3 style="text-align:center;">HIRE MECHANIC TO AGENCY</h3>
+<h3 style="text-align:center;">АНКЕТА МЕХАНИКА</h3>
 <div>
-  <form method="post"  enctype="multipart/form-data"  style="margin-left:200px;margin-right:200px;">
-      {% csrf_token %}
+    <form method="post" enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
+        {% csrf_token %}
 
-        <label for="first_name">First Name</label>
-        {% render_field userForm.first_name class="form-control" placeholder="First Name" %}
-        <label for="last_name">Last Name</label>
-        {% render_field userForm.last_name class="form-control" placeholder="Last Name" %}
-        <label for="mobile">Mobile</label>
-        {% render_field mechanicForm.mobile class="form-control" placeholder="Mobile" %}
-        <label for="address">Address</label>
-        {% render_field mechanicForm.address class="form-control" placeholder="Address" %}
+        <label for="first_name">Имя</label>
+        {% render_field userForm.first_name class="form-control" placeholder="Введите имя" %}
+        <label for="last_name">Фамилия</label>
+        {% render_field userForm.last_name class="form-control" placeholder="Введите фамилию" %}
+        <label for="mobile">Телефон</label>
+        {% render_field mechanicForm.mobile class="form-control" placeholder="375-ХХ-ХХХ-ХХ-ХХ " %}
+        <label for="email">Адрес</label>
+        {% render_field mechanicForm.email class="form-control" placeholder="Email" %}
+        <label for="skill">Навыки</label>
+        {% render_field mechanicForm.skill class="form-control" placeholder="Опишите навыки(специальность)" %}
+        <label for="salary">Зарплата</label>
+        {% render_field mechanicSalary.salary class="form-control" placeholder="Установите ставку(зарплату)" %}
+        <label for="username">Логин</label>
+        {% render_field userForm.username class="form-control" placeholder="Логин" %}
+        <label for="password">Пароль</label>
+        {% render_field userForm.password class="form-control" placeholder="Пароль" %} <br><br>
+        <label for="profile_pic">Фото профиля</label>
+        {% render_field mechanicForm.profile_pic class="form-control" placeholder="Фото профиля" %}
 
-        <label for="skill">Skills</label>
-        {% render_field mechanicForm.skill class="form-control" placeholder="skills" %}
-
-        <label for="salary">Salary</label>
-        {% render_field mechanicSalary.salary class="form-control" placeholder="salary" %}
-
-        <label for="username">Username</label>
-        {% render_field userForm.username class="form-control" placeholder="Username" %}
-        <label for="password">Password</label>
-        {% render_field userForm.password class="form-control" placeholder="Password" %} <br><br>
-        <label for="profile_pic">Profile Picture</label>
-        {% render_field mechanicForm.profile_pic class="form-control" placeholder="Profile Picture" %}
-
-    <input type="submit" value="Create">
-  </form>
+        <input type="submit" value="Создать">
+    </form>
 </div>
-
 
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

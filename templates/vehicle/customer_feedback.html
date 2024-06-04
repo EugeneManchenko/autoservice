@@ -35,18 +35,18 @@
 </head>
 
 <br><br><br><br><br>
-<h3 style="text-align:center;">Send Feedback To Admin</h3>
+<h3 style="text-align:center;">Отправить сообщение администратору</h3>
 <div>
   <form method="post" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
 
-    <label for="by">Your Name</label>
+    <label for="by">Ваше имя</label>
     {% render_field feedback.by class="form-control"  %}
 
-    <label for="message">Message</label>
+    <label for="message">Сообщение</label>
     {% render_field feedback.message class="form-control"  %}
 
-    <input type="submit" value="Send">
+    <input type="submit" value="Отправить">
   </form>
 </div>
 

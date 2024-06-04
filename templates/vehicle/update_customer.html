@@ -35,26 +35,26 @@
 </head>
 
 <br><br><br><br><br>
-<h3 style="text-align:center;">UPDATE CUSTOMER</h3>
+<h3 style="text-align:center;">ОБНОВЛЕНИЕ ДАННЫХ КЛИЕНТА</h3>
 <div>
   <form method="post"  enctype="multipart/form-data" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
-        <label for="first_name">First Name</label>
-        {% render_field userForm.first_name class="form-control" placeholder="First Name" %}
-        <label for="last_name">Last Name</label>
-        {% render_field userForm.last_name class="form-control" placeholder="Last Name" %}
-          <label for="mobile">Mobile</label>
-          {% render_field customerForm.mobile class="form-control" placeholder="Mobile" %}
-            <label for="address">Address</label>
-          {% render_field customerForm.address class="form-control" placeholder="Address" %}
-        <label for="username">Username</label>
-        {% render_field userForm.username class="form-control" placeholder="Username" %}
-          <label for="password">Password</label>
-        {% render_field userForm.password class="form-control" placeholder="Password" %} <br><br>
-        <label for="profile_pic">Profile Picture</label>
-          {% render_field customerForm.profile_pic class="form-control" placeholder="Profile Picture" %}
+        <label for="first_name">Имя</label>
+        {% render_field userForm.first_name class="form-control" placeholder="Имя" %}
+        <label for="last_name">Фамилия</label>
+        {% render_field userForm.last_name class="form-control" placeholder="Фамилия" %}
+          <label for="mobile">Телефон</label>
+          {% render_field customerForm.mobile class="form-control" placeholder="Мобильный" %}
+            <label for="address">Адрес</label>
+          {% render_field customerForm.address class="form-control" placeholder="Адрес" %}
+        <label for="username">Логин</label>
+        {% render_field userForm.username class="form-control" placeholder="Логин" %}
+          <label for="password">Пароль</label>
+        {% render_field userForm.password class="form-control" placeholder="Пароль" %} <br><br>
+        <label for="profile_pic">Фотография профиля</label>
+          {% render_field customerForm.profile_pic class="form-control" placeholder="Фотография" %}
 <br><br>
-    <input type="submit" value="Update">
+    <input type="submit" value="Обновить">
   </form>
 </div>
 

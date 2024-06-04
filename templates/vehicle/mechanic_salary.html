@@ -1,50 +1,52 @@
 {% extends 'vehicle/mechanicbase.html' %}
 {% block content %}
 {% load static %}
-	<!-- main content -->
-	<div class="wrapper">
-<br><br>
-    <h1 style="text-align:center;color:blue;">Your Salary : {{mechanic.salary}}</h1><br><br><br>
-<!-- ****** table  start ********** -->
-		<div class="row">
-			<div class="col-12 col-m-12 col-sm-12">
-				<div class="card">
-					<div class="card-header">
-						<h3 style="color:red; text-align:center" >Vehicles You Have Repaired
-						</h3>
 
-					</div>
-					<div class="card-content">
-						<table>
-							<thead>
-                <tr>
-                  <th>Vehicle Name</th>
+<div class="wrapper">
+    <br><br>
+    <h1 style="text-align:center;color:blue;">Оплата труда в день, установленная администратором : {{mechanic.salary}} рублей</h1><br><br><br>
+    <!-- ****** начало таблицы ********** -->
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 style="color:red; text-align:center">Автомобили, которые вы отремонтировали
+                    </h3>
 
-                  <th>Number</th>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Рег.номер</th>
+                            <th>Марка</th>
+                            <th>Модель</th>
+                            <th>VIN</th>
 
-                  <th>Problem Description</th>
+                            <th>Описание проблеммы</th>
 
-                </tr>
-							</thead>
-							<tbody>
-              {% for w in workdone %}
-                <tr>
-                  <td> {{w.vehicle_name}}</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for w in workdone %}
+                        <tr>
+                            <td> {{w.vehicle_name}}</td>
+                            <td> {{w.vehicle_brand}}</td>
+                            <td> {{w.vehicle_model}}</td>
+                            <td> {{w.vehicle_no}}</td>
 
-                  <td> {{w.vehicle_no}}</td>
+                            <td> {{w.problem_description}}</td>
+                        </tr>
+                        {% endfor %}
 
-                  <td> {{w.problem_description}}</td>
-                    </tr>
-                {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ****** конец таблицы ********** -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
 
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-<!-- ****** table start ********** -->
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	</div>
-	<!-- end main content -->
 {% endblock content %}

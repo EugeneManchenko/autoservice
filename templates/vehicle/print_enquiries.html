@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/endquiries.css">
+    <style>
+        /* Стили для таблицы */
+        .my-table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        .my-table th, .my-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .my-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="requisites">
+    <p>Исполнитель:</p>
+    <p>ООО "Autoup"</p>
+    <p>г. Минск, ул Братская 1 пом.369</p>
+    <p>УНП 690729292</p>
+    <p>тел. +375336305287</p>
+    <!-- Добавьте другие реквизиты по необходимости -->
+</div>
+    <h1>ЗАКАЗ НАРЯД</h1>
+    <table class="my-table">
+        <thead>
+            <tr>
+                <th>Регистрационный номер</th>
+                <th>Марка</th>
+                <th>Модель</th>
+                <th>VIN</th>
+                <th>Пробег</th>
+                <th>Описание проблемы</th>
+                <th>Дата заявки</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enq in enquiries %}
+            <tr>
+                <td>{{ enq.vehicle_name }}</td>
+                <td>{{ enq.vehicle_brand }}</td>
+                <td>{{ enq.vehicle_model }}</td>
+                <td>{{ enq.vehicle_no }}</td>
+                <td>{{ enq.mileage }}</td>
+                <td>{{ enq.problem_description }}</td>
+                <td>{{ enq.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <input type="button" value="Печать страницы" style="margin-top: 10px; padding: 5px 10px; background-color: #0078d4; color: white; border: none; cursor: pointer;" onClick="window.print()">
+
+<div style="margin-top:52px;"> ИСПОЛНИТЕЛЬ________________</div>
+<div style="margin-top:92px;"> ЗАКАЗЧИК___________________</div>
+
+</body>
+</html>

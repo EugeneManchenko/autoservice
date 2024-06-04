@@ -2,10 +2,10 @@
 {% load static %}
 {% block content %}
 
-	<!-- main content -->
+	<!-- Начало основного контента -->
 	<div class="wrapper">
 
-<!-- ****** cards start ********** -->
+<!-- ****** Начало окна ********** -->
 		<div class="row">
 			<div class="col-3 col-m-6 col-sm-6">
 				<div class="counter bg-primary">
@@ -13,7 +13,7 @@
 						<i class="fas fa-tasks"></i>
 					</p>
 					<h3>{{new_work_assigned}}</h3>
-					<p>New Work Assigned</p>
+					<p>Утвержденные заявки</p>
 				</div>
 			</div>
 			<div class="col-3 col-m-6 col-sm-6">
@@ -22,7 +22,7 @@
 						<i class="fas fa-spinner"></i>
 					</p>
 					<h3>{{work_in_progress}}</h3>
-					<p>Work In Progress</p>
+					<p>В процессе ремонта</p>
 				</div>
 			</div>
 			<div class="col-3 col-m-6 col-sm-6">
@@ -31,7 +31,7 @@
 						<i class="fas fa-check-circle"></i>
 					</p>
 					<h3>{{work_completed}}</h3>
-					<p>Work Completed</p>
+					<p>Выполнен ремонт</p>
 				</div>
 			</div>
 			<div class="col-3 col-m-6 col-sm-6">
@@ -40,22 +40,21 @@
 						<i class="fas fa-rupee-sign"></i>
 					</p>
 					<h3>{{salary}}</h3>
-					<p>Salary</p>
+					<p>Зарплата, установленная админом</p>
 				</div>
 			</div>
 		</div><br><br><br><br>
 		<marquee behavior="scroll" direction="left">
-		 <img src="{% static "images/ferrari.png" %}" width="120" height="80" alt="ferrari" />
-			<img src="{% static "images/ford.png" %}" width="120" height="80" alt="ford" />
-		 <img src="{% static "images/lambo.png" %}" width="120" height="80" alt="lambo" />
-		 <img src="{% static "images/mahindra.png" %}" width="120" height="80" alt="mahindra" />
-		 <img src="{% static "images/tvs.png" %}" width="120" height="80" alt="tvs" />
-		 <img src="{% static "images/tata.png" %}" width="120" height="80" alt="tata" />
-		 <img src="{% static "images/hero.png" %}" width="120" height="80" alt="hero" />
-		 <img src="{% static "images/rolls.png" %}" width="120" height="80" alt="rolls" />
-		 <img src="{% static "images/suzuki.png" %}" width="120" height="80" alt="suzuki" />
-	 </marquee>
-	 <br><br><br><br><br><br><br><br><br><br><br><br>
+			<img src="{% static "images/bmw.png" %}" width="120" height="80" alt="bmw" /><img src="{% static "images/ford.png" %}" width="120" height="80" alt="ford" />
+   			<img src="{% static "images/mercedes.png" %}" width="120" height="80" alt="mercedes" />
+   			<img src="{% static "images/brembo.png" %}" width="120" height="80" alt="brembo" />
+			<img src="{% static "images/schatem.png" %}" width="120" height="80" alt="schatem" />
+   			<img src="{% static "images/armtec.png" %}" width="120" height="80" alt="armtec" />
+   			<img src="{% static "images/audi.png" %}" width="120" height="80" alt="audi" />
+   			<img src="{% static "images/vw.png" %}" width="120" height="80" alt="vw" />
+   			<img src="{% static "images/volvo.png" %}" width="120" height="80" alt="volvo" />
+	 	</marquee>
+	 	<br><br><br><br><br><br><br><br><br><br><br><br>
 		</div>
 
 

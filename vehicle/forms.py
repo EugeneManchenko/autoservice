@@ -13,7 +13,7 @@ class CustomerUserForm(forms.ModelForm):
 class CustomerForm(forms.ModelForm):
     class Meta:
         model=models.Customer
-        fields=['address','mobile','profile_pic']
+        fields=['email','mobile','profile_pic']
 
 
 class MechanicUserForm(forms.ModelForm):
@@ -27,22 +27,22 @@ class MechanicUserForm(forms.ModelForm):
 class MechanicForm(forms.ModelForm):
     class Meta:
         model=models.Mechanic
-        fields=['address','mobile','profile_pic','skill']
+        fields=['email','mobile','profile_pic','skill']
 
 class MechanicSalaryForm(forms.Form):
-    salary=forms.IntegerField();
+    salary=forms.IntegerField()
 
 
 class RequestForm(forms.ModelForm):
     class Meta:
         model=models.Request
-        fields=['category','vehicle_no','vehicle_name','vehicle_model','vehicle_brand','problem_description']
+        fields=['category','mileage','vehicle_no','vehicle_name','vehicle_model','vehicle_brand','mileage','year','problem_description']
         widgets = {
         'problem_description':forms.Textarea(attrs={'rows': 3, 'cols': 30})
         }
 
 class AdminRequestForm(forms.Form):
-    #to_field_name value will be stored when form is submitted.....__str__ method of customer model will be shown there in html
+    #значение to_field_name будет сохранено при отправке формы .....__str__ метод модели клиента будет показан там в формате html
     customer=forms.ModelChoiceField(queryset=models.Customer.objects.all(),empty_label="Customer Name",to_field_name='id')
     mechanic=forms.ModelChoiceField(queryset=models.Mechanic.objects.all(),empty_label="Mechanic Name",to_field_name='id')
     cost=forms.IntegerField()
@@ -50,7 +50,11 @@ class AdminRequestForm(forms.Form):
 class AdminApproveRequestForm(forms.Form):
     mechanic=forms.ModelChoiceField(queryset=models.Mechanic.objects.all(),empty_label="Mechanic Name",to_field_name='id')
     cost=forms.IntegerField()
-    stat=(('Pending','Pending'),('Approved','Approved'),('Released','Released'))
+    stat = (
+        ('Ожидание', 'Ожидание'),
+        ('Утверждено', 'Утверждено'),
+        ('Выпущено', 'Выпущено')
+    )
     status=forms.ChoiceField( choices=stat)
 
 
@@ -58,7 +62,11 @@ class UpdateCostForm(forms.Form):
     cost=forms.IntegerField()
 
 class MechanicUpdateStatusForm(forms.Form):
-    stat=(('Approved','Approved'),('Repairing','Repairing'),('Repairing Done','Repairing Done'))
+    stat = (
+        ('Утверждено', 'Утверждено'),
+        ('В ремонте', 'В ремонте'),
+        ('Ремонт завершен', 'Ремонт завершен')
+    )
     status=forms.ChoiceField( choices=stat)
 
 class FeedbackForm(forms.ModelForm):
@@ -69,8 +77,8 @@ class FeedbackForm(forms.ModelForm):
         'message':forms.Textarea(attrs={'rows': 6, 'cols': 30})
         }
 
-#for Attendance related form
-presence_choices=(('Present','Present'),('Absent','Absent'))
+#для формы, связанной с посещаемостью
+presence_choices=(('Present','Присутствует'),('Absent','Отсутствует'))
 class AttendanceForm(forms.Form):
     present_status=forms.ChoiceField( choices=presence_choices)
     date=forms.DateField()
@@ -79,7 +87,7 @@ class AskDateForm(forms.Form):
     date=forms.DateField()
 
 
-#for contact us page
+#для страницы обратная связь
 class ContactusForm(forms.Form):
     Name = forms.CharField(max_length=30)
     Email = forms.EmailField()

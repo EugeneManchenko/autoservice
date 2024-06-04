@@ -2,16 +2,16 @@
 {% block content %}
 {% load static %}
 
-	<!-- main content -->
+
 	<div class="wrapper">
 
-<!-- ****** table  start ********** -->
+<!-- ****** старт таблицы ********** -->
 		<div class="row">
 			<div class="col-12 col-m-12 col-sm-12">
 				<div class="card">
 					<div class="card-header">
 						<h3 style="color:red; text-align:center" >
-							Hire Mechanics Based On Skill
+							Данные механиков и их навыки
 						</h3>
 
 					</div>
@@ -19,13 +19,13 @@
 						<table>
 							<thead>
                 <tr>
-                  <th>Mechanic Name</th>
-                  <th>Profile Picture</th>
-                  <th>Mobile Number</th>
-                  <th>Address</th>
-                  <th>Skills</th>
-                  <th>Approve</th>
-                  <th>Delete</th>
+                  <th>Имя</th>
+                  <th>Фотография</th>
+                  <th>Мобильный телефон</th>
+                  <th>Адрес</th>
+                  <th>Навыки</th>
+                  <th>Утвердить</th>
+                  <th>Отклонить и удалить</th>
                 </tr>
 							</thead>
 							<tbody>
@@ -34,7 +34,7 @@
                   <td> {{m.get_name}}</td>
                   <td> <img src="{% static m.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
                   <td>{{m.mobile}}</td>
-                  <td>{{m.address}}</td>
+                  <td>{{m.email}}</td>
                   <td>{{m.skill}}</td>
                   <td><a  style="color:red; text-decoration:none;font-size:25px;" href="{% url 'approve-mechanic' m.id  %}">&#10004;</a></td>
                   <td><a style="color:blue; text-decoration:none;font-size:25px;"href="{% url 'delete-mechanic' m.id  %}">&#10008;</a></td>
@@ -47,8 +47,8 @@
 				</div>
 			</div>
 		</div>
-<!-- ****** table start ********** -->
+<!-- ****** конец таблицы ********** -->
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</div>
-	<!-- end main content -->
+
 {% endblock content %}

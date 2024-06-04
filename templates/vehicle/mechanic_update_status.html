@@ -35,16 +35,16 @@
 </head>
 
 <br><br><br><br><br>
-<h3 style="text-align:center;">Update Status Of Work</h3>
+<h3 style="text-align:center;">Обновление статуса работы</h3>
 <div>
   <form method="post" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
 
-    <label for="salary">Status</label>
+    <label for="salary">Статус</label>
     {% render_field updateStatus.status class="form-control"  %}
 
 
-    <input type="submit" value="Update">
+    <input type="submit" value="Обновить статус">
   </form>
 </div>
 

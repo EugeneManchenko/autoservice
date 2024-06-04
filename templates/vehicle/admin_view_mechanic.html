@@ -1,15 +1,15 @@
 {% extends 'vehicle/adminbase.html' %}
 {% block content %}
 {% load static %}
-	<!-- main content -->
+	<!-- Основной контент -->
 	<div class="wrapper">
 
-<!-- ****** table  start ********** -->
+<!-- ****** начало таблицы ********** -->
 		<div class="row">
 			<div class="col-12 col-m-12 col-sm-12">
 				<div class="card">
 					<div class="card-header">
-						<h3 style="color:red; text-align:center" >Mechanics
+						<h3 style="color:red; text-align:center" >Механики AutoUp
 						</h3>
 
 					</div>
@@ -17,14 +17,14 @@
 						<table>
 							<thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Profile Picture</th>
-                  <th>Mobile</th>
-                  <th>Address</th>
-                  <th>Skills</th>
-                  <th>Salary</th>
-                  <th>Update</th>
-                  <th>Delete</th>
+                  <th>Имя</th>
+                  <th>Фото</th>
+                  <th>Мобильный телефон</th>
+                  <th>Email</th>
+                  <th>Навыки</th>
+                  <th>Зарплата</th>
+                  <th>Обновить</th>
+                  <th>Удалить</th>
                 </tr>
 							</thead>
 							<tbody>
@@ -33,11 +33,11 @@
                   <td> {{m.get_name}}</td>
                   <td> <img src="{% static m.profile_pic.url %}" alt="Profile Pic" height="40px" width="40px" /></td>
                   <td>{{m.mobile}}</td>
-                  <td>{{m.address}}</td>
+                  <td>{{m.email}}</td>
                   <td>{{m.skill}}</td>
                   <td>{{m.salary}}</td>
                   <td><a  style="color:red; text-decoration:none;font-size:25px;" href="{% url 'update-mechanic' m.id  %}">&#9998;</a></td>
-                  <td><a style="color:blue; text-decoration:none;font-size:25px;"href="{% url 'delete-mechanic' m.id  %}">&#10008;</a></td>
+                  <td><a style="color:blue; text-decoration:none;font-size:25px;" href="{% url 'delete-mechanic' m.id  %}">&#10008;</a></td>
                 </tr>
                 {% endfor %}
 
@@ -47,8 +47,8 @@
 				</div>
 			</div>
 		</div>
-<!-- ****** table start ********** -->
+<!-- ****** конец таблицы ********** -->
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</div>
-	<!-- end main content -->
+	<!-- конец основного контента -->
 {% endblock content %}

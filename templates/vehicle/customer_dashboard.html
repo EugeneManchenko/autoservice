@@ -2,49 +2,48 @@
 {% load static %}
 {% block content %}
 
-	<!-- main content -->
-	<div class="wrapper">
+<div class="wrapper">
 
-<!-- ****** cards start ********** -->
-		<div class="row">
-			<div class="col-3 col-m-6 col-sm-6">
-				<div class="counter bg-primary">
-					<p>
-						<i class="fas fa-tasks"></i>
-					</p>
-					<h3>{{new_request_made}}</h3>
-					<p>Новая заявка на ремонт</p>
-				</div>
-			</div>
-			<div class="col-3 col-m-6 col-sm-6">
-				<div class="counter bg-warning">
-					<p>
-						<i class="fas fa-spinner"></i>
-					</p>
-					<h3>{{work_in_progress}}</h3>
-					<p>Текущий ремонт авто</p>
-				</div>
-			</div>
-			<div class="col-3 col-m-6 col-sm-6">
-				<div class="counter bg-success">
-					<p>
-						<i class="fas fa-check-circle"></i>
-					</p>
-					<h3>{{work_completed}}</h3>
-					<p>Завершенный ремонт</p>
-				</div>
-			</div>
-			<div class="col-3 col-m-6 col-sm-6">
-				<div class="counter bg-danger">
-					<p>
-						<i class="fas fa-rupee-sign"></i>
-					</p>
-					<h3>{{bill}}</h3>
-					<p>Общее количество</p>
-				</div>
-			</div>
-		</div><br><br><br><br>
-		<marquee behavior="scroll" direction="left">
+    <div class="row">
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="counter bg-primary">
+                <p>
+                    <i class="fas fa-tasks"></i>
+                </p>
+                <h3>{{ new_request_made }}</h3>
+                <p>Заявки на ремонт</p>
+            </div>
+        </div>
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="counter bg-warning">
+                <p>
+                    <i class="fas fa-spinner"></i>
+                </p>
+                <h3>{{ work_in_progress }}</h3>
+                <p>Текущий ремонт</p>
+            </div>
+        </div>
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="counter bg-success">
+                <p>
+                    <i class="fas fa-check-circle"></i>
+                </p>
+                <h3>{{ work_completed }}</h3>
+                <p>Завершенный ремонт</p>
+            </div>
+        </div>
+        <div class="col-3 col-m-6 col-sm-6">
+            <div class="counter bg-danger">
+                <p>
+                    <i class="fas fa-rupee-sign"></i>
+                </p>
+                <h3>{{ bill }}</h3>
+                <p>Общая стоимость заказов</p>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+    <marquee behavior="scroll" direction="left">
 		 <img src="{% static "images/bmw.png" %}" width="120" height="80" alt="bmw" /><img src="{% static "images/ford.png" %}" width="120" height="80" alt="ford" />
    <img src="{% static "images/mercedes.png" %}" width="120" height="80" alt="mercedes" />
    <img src="{% static "images/brembo.png" %}" width="120" height="80" alt="brembo" />
@@ -54,9 +53,8 @@
    <img src="{% static "images/vw.png" %}" width="120" height="80" alt="vw" />
    <img src="{% static "images/volvo.png" %}" width="120" height="80" alt="volvo" />
 	 </marquee>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<!-- ****** cards end ********** -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-	</div>
-	<!-- end main content -->
+</div>
+
 {% endblock content %}

@@ -44,17 +44,23 @@
     <label for="category">Категория автомобиля</label>
     {% render_field enquiry.category class="form-control"  %}<br>
 
-    <label for="vehicle_no">Регистрационный номер автомобиля</label>
-    {% render_field enquiry.vehicle_no class="form-control" placeholder="Введите регистрационный номер" %}
+    <label for="mileage">Пробег</label>
+    {% render_field enquiry.mileage class="form-control" placeholder="Введите пробег" %}
 
-    <label for="vehicle_name">VIN номер</label>
-    {% render_field enquiry.vehicle_name class="form-control" placeholder="VIN" %}
+    <label for="vehicle_no">VIN номер</label>
+    {% render_field enquiry.vehicle_no class="form-control" placeholder="Введите 17 знаков" %}
+
+    <label for="vehicle_name">Регистрационный номер</label>
+    {% render_field enquiry.vehicle_name class="form-control" placeholder="0000XX7" %}
 
     <label for="vehicle_brand">Марка автомобиля</label>
     {% render_field enquiry.vehicle_brand class="form-control" placeholder="Марка" %}
 
     <label for="vehicle_model">Модель</label>
     {% render_field enquiry.vehicle_model class="form-control" placeholder="Модель" %}
+
+    <label for="year">Год выпуска</label>
+    {% render_field enquiry.year class="form-control" placeholder="Год выпуска" %}
 
     <label for="problem_description">Описание проблемы</label>
     {% render_field enquiry.problem_description class="form-control" placeholder="Опишите проблему" %}

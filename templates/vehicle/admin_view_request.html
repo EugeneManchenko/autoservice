@@ -1,15 +1,15 @@
 {% extends 'vehicle/adminbase.html' %}
 {% block content %}
 
-	<!-- main content -->
+
 	<div class="wrapper">
 
-<!-- ****** table  start ********** -->
+<!-- ****** Начало таблицы ********** -->
 		<div class="row">
 			<div class="col-12 col-m-12 col-sm-12">
 				<div class="card">
 					<div class="card-header">
-						<h3 style="color:red; text-align:center" >Enquiry Made By Customer
+						<h3 style="color:red; text-align:center" >Заявки клиентов на ремонт
 						</h3>
 
 					</div>
@@ -17,15 +17,15 @@
 						<table>
 							<thead>
                 <tr>
-                  <th>Customer Name</th>
+                  <th>Имя клиента</th>
 
-                  <th>Vehicle Name</th>
-                  <th>Category</th>
+                  <th>VIN номер</th>
+                  <th>Тип транспортного средства</th>
 
-                  <th>Problem Description</th>
-                  <th>Status</th>
-                  <th>Change Status</th>
-                  <th>Delete</th>
+                  <th>Описание проблеммы</th>
+                  <th>Статус</th>
+                  <th>Изменить статус</th>
+                  <th>Удалить</th>
                 </tr>
 							</thead>
 							<tbody>
@@ -51,8 +51,8 @@
 				</div>
 			</div>
 		</div>
-<!-- ****** table start ********** -->
+<!-- ****** Конец таблицы ********** -->
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</div>
-	<!-- end main content -->
+	<!-- Конец основного контента -->
 {% endblock content %}

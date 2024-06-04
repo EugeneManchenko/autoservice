@@ -2,10 +2,10 @@
 {% load static %}
 {% block content %}
 
-	<!-- main content -->
+
 	<div class="wrapper">
 
-<!-- ****** cards start ********** -->
+
 		<div class="row">
 			<div class="col-3 col-m-6 col-sm-6">
 				<div class="counter bg-primary">
@@ -13,7 +13,7 @@
 						<i class="fas fa-users"></i>
 					</p>
 					<h3>{{total_customer}}</h3>
-					<p>Total Customer</p>
+					<p>Количество клиентов</p>
 				</div>
 			</div>
 			<div class="col-3 col-m-6 col-sm-6">
@@ -22,7 +22,7 @@
 						<i class="fas fa-hat-cowboy"></i>
 					</p>
 					<h3>{{total_mechanic}}</h3>
-					<p>Total Mechanic</p>
+					<p>Количество механиков</p>
 				</div>
 			</div>
 			<div class="col-3 col-m-6 col-sm-6">
@@ -31,7 +31,7 @@
 						<i class="fas fa-spinner"></i>
 					</p>
 					<h3>{{total_request}}</h3>
-					<p>Total Enquiry</p>
+					<p>Количество заявок</p>
 				</div>
 			</div>
 			<div class="col-3 col-m-6 col-sm-6">
@@ -40,19 +40,19 @@
 						<i class="fas fa-comments"></i>
 					</p>
 					<h3>{{total_feedback}}</h3>
-					<p>Total Feedback</p>
+					<p>Количество сообщений</p>
 				</div>
 			</div>
 		</div>
-<!-- ****** cards end ********** -->
 
 
-<!-- ****** table  start ********** -->
+
+
 		<div class="row">
 			<div class="col-12 col-m-12 col-sm-12">
 				<div class="card">
 					<div class="card-header">
-						<h3 style="color:red; text-align:center" >Recent Enquiry By Customer
+						<h3 style="color:red; text-align:center" >Последние заявки от клиентов
 						</h3>
 
 					</div>
@@ -60,12 +60,12 @@
 						<table>
 							<thead>
 								<tr>
-									<th>Customer Name</th>
-									<th>Vehicle Name</th>
-									<th>Category</th>
-									<th>Vehicle Model</th>
-									<th>Vehicle Brand</th>
-									<th>Problem Description</th>
+									<th>Имя клиента</th>
+									<th>VIN</th>
+									<th>Категория ТС</th>
+									<th>Модель</th>
+									<th>Марка</th>
+									<th>Описание проблеммы</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -86,10 +86,10 @@
 				</div>
 			</div>
 		</div>
-<!-- ****** table start ********** -->
+
 
   <br><br><br><br><br><br>
 
 	</div>
-	<!-- end main content -->
+
 {% endblock content %}

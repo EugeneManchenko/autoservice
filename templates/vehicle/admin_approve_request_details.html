@@ -35,21 +35,21 @@
 </head>
 
 <br><br><br><br><br>
-<h3 style="text-align:center;">APPROVE REQUEST OR CHANGE STATUS</h3>
+<h3 style="text-align:center;">ОКНО ОБРАБОТКИ ЗАЯВОК</h3>
 <div>
   <form method="post" style="margin-left:200px;margin-right:200px;">
       {% csrf_token %}
 
-    <label for="cost">Repair Cost</label>
-    {% render_field adminenquiry.cost class="form-control" placeholder="Repair Cost" %}
+    <label for="cost">Стоимость ремонта</label>
+    {% render_field adminenquiry.cost class="form-control" placeholder="Введите стоимость ремонта" %}
 
-    <label for="mechanic">Assign Mechanic</label>
+    <label for="mechanic">Исполнитель(механик)</label>
     {% render_field adminenquiry.mechanic class="form-control"  %}
 
-    <label for="status">Status</label>
+    <label for="status">Статус</label>
     {% render_field adminenquiry.status class="form-control" %}
 
-    <input type="submit" value="Submit">
+    <input type="submit" value="Утвердить">
   </form>
 </div>
 

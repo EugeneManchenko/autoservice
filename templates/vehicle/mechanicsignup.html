@@ -22,7 +22,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    background: #191919;
+    background: #1a1a1a;
     ;
     text-align: center;
     transition: 0.25s;
@@ -153,19 +153,19 @@ a.socialIcon:hover,
             <div class="card">
                 <form class="box" method="post" enctype="multipart/form-data">
                   {% csrf_token %}
-                    <h1>Mechanic SIGNUP</h1>
-                    <p class="text-muted"> Please enter your details to create account !</p>
-                      {% render_field userForm.first_name class="form-control" placeholder="First Name" %}
-                        {% render_field userForm.last_name class="form-control" placeholder="Last Name" %}
-                        {% render_field mechanicForm.address class="form-control" placeholder="Address" %}
-                          {% render_field mechanicForm.mobile class="form-control" placeholder="Mobile" %}
-                          {% render_field mechanicForm.skill class="form-control" placeholder="Skills" %}
-                          {% render_field userForm.username class="form-control" placeholder="Username" %}
-                            {% render_field userForm.password class="form-control" placeholder="Password" %}
+                    <h1>РЕГИСТРАЦИЯ механика</h1>
+                    <p class="text-muted"> Пожалуйста, введите свои данные для создания учетной записи!</p>
+                      {% render_field userForm.first_name class="form-control" placeholder="Имя" %}
+                        {% render_field userForm.last_name class="form-control" placeholder="Фамилия" %}
+                        {% render_field mechanicForm.email class="form-control" placeholder="Email" %}
+                          {% render_field mechanicForm.mobile class="form-control" placeholder="Мобильный" %}
+                          {% render_field mechanicForm.skill class="form-control" placeholder="Навыки" %}
+                          {% render_field userForm.username class="form-control" placeholder="Логин" %}
+                            {% render_field userForm.password class="form-control" placeholder="Пароль" %}
 
                                   {% render_field mechanicForm.profile_pic class="form-control" placeholder="Profile pic" %}
 
-                     <input type="submit" name="" value="Create">
+                     <input type="submit" name="" value="Создать">
 
                 </form>
             </div>

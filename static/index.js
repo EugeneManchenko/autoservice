@@ -68,7 +68,7 @@ function closeAllDropdown() {
 function openCloseDropdown(event) {
 	if (!event.target.matches('.dropdown-toggle')) {
 		// 
-		// Close dropdown when click out of dropdown menu
+		// Закрыть выпадающий список при нажатии на него из выпадающего меню
 		// 
 		closeAllDropdown()
 	} else {

@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render,redirect,reverse
 from . import forms,models
 from django.db.models import Sum
@@ -13,20 +14,20 @@ def home_view(request):
     return render(request,'vehicle/index.html')
 
 
-#for showing signup/login button for customer
+#для отображения кнопки регистрации/логина для клиента
 def customerclick_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
     return render(request,'vehicle/customerclick.html')
 
-#for showing signup/login button for mechanics
+#для отображения кнопки регистрации/логина для механиков
 def mechanicsclick_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
     return render(request,'vehicle/mechanicsclick.html')
 
 
-#for showing signup/login button for ADMIN(by sumit)
+#для отображения кнопки регистрации/логина для администратора (от sumit)
 def adminclick_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
@@ -73,7 +74,7 @@ def mechanic_signup_view(request):
     return render(request,'vehicle/mechanicsignup.html',context=mydict)
 
 
-#for checking user customer, mechanic or admin(by sumit)
+#для проверки пользователя-заказчика, механика или администратора (по sumit)
 def is_customer(user):
     return user.groups.filter(name='CUSTOMER').exists()
 def is_mechanic(user):
@@ -95,7 +96,7 @@ def afterlogin_view(request):
 
 
 #============================================================================================
-# Начало работы с админкой
+# НАЧАЛО РАБОТЫ С АДМИНКОЙ
 #============================================================================================
 
 @login_required(login_url='adminlogin')
@@ -362,7 +363,7 @@ def admin_add_request_view(request):
             enquiry_x.customer=adminenquiry.cleaned_data['customer']
             enquiry_x.mechanic=adminenquiry.cleaned_data['mechanic']
             enquiry_x.cost=adminenquiry.cleaned_data['cost']
-            enquiry_x.status='Approved'
+            enquiry_x.status='Утверждено'
             enquiry_x.save()
         else:
             print("form is invalid")
@@ -371,7 +372,7 @@ def admin_add_request_view(request):
 
 @login_required(login_url='adminlogin')
 def admin_approve_request_view(request):
-    enquiry=models.Request.objects.all().filter(status='Pending')
+    enquiry=models.Request.objects.all().filter(status='Ожидание')
     return render(request,'vehicle/admin_approve_request.html',{'enquiry':enquiry})
 
 @login_required(login_url='adminlogin')
@@ -466,10 +467,12 @@ def admin_view_attendance_view(request):
 
 @login_required(login_url='adminlogin')
 def admin_report_view(request):
-    reports=models.Request.objects.all().filter(Q(status="Repairing Done") | Q(status="Released"))
+    reports=models.Request.objects.all().filter(Q(status="Ремонт завершен") | Q(status="Выпущено"))
     dict={
         'reports':reports,
     }
+    total_cost = sum(report.cost for report in reports)
+    return render(request, 'vehicle/admin_report.html', {'reports': reports, 'total_cost': total_cost})
     return render(request,'vehicle/admin_report.html',context=dict)
 
 
@@ -479,22 +482,22 @@ def admin_feedback_view(request):
     return render(request,'vehicle/admin_feedback.html',{'feedback':feedback})
 
 #============================================================================================
-# ADMIN RELATED views END
+# ПРОСМОТРЫ, СВЯЗАННЫЕ С АДМИНИСТРАТОРОМ, КОНЕЦ
 #============================================================================================
 
 
 #============================================================================================
-# CUSTOMER RELATED views start
+# НАЧАЛО ПРОСМОТРОВ, СВЯЗАННЫЕ с КЛИЕНТАМИ
 #============================================================================================
 
 @login_required(login_url='customerlogin')
 @user_passes_test(is_customer)
 def customer_dashboard_view(request):
     customer=models.Customer.objects.get(user_id=request.user.id)
-    work_in_progress=models.Request.objects.all().filter(customer_id=customer.id,status='Repairing').count()
-    work_completed=models.Request.objects.all().filter(customer_id=customer.id).filter(Q(status="Repairing Done") | Q(status="Released")).count()
-    new_request_made=models.Request.objects.all().filter(customer_id=customer.id).filter(Q(status="Pending") | Q(status="Approved")).count()
-    bill=models.Request.objects.all().filter(customer_id=customer.id).filter(Q(status="Repairing Done") | Q(status="Released")).aggregate(Sum('cost'))
+    work_in_progress=models.Request.objects.all().filter(customer_id=customer.id,status='В ремонте').count()
+    work_completed=models.Request.objects.all().filter(customer_id=customer.id).filter(Q(status="Ремонт завершен") | Q(status="Выпущено")).count()
+    new_request_made=models.Request.objects.all().filter(customer_id=customer.id).filter(Q(status="Ожидание") | Q(status="Утверждено")).count()
+    bill=models.Request.objects.all().filter(customer_id=customer.id).filter(Q(status="Ремонт завершен") | Q(status="Выпущено")).aggregate(Sum('cost'))
     print(bill)
     dict={
     'work_in_progress':work_in_progress,
@@ -517,7 +520,7 @@ def customer_request_view(request):
 @user_passes_test(is_customer)
 def customer_view_request_view(request):
     customer=models.Customer.objects.get(user_id=request.user.id)
-    enquiries=models.Request.objects.all().filter(customer_id=customer.id , status="Pending")
+    enquiries=models.Request.objects.all().filter(customer_id=customer.id , status="Ожидание")
     return render(request,'vehicle/customer_view_request.html',{'customer':customer,'enquiries':enquiries})
 
 
@@ -533,14 +536,14 @@ def customer_delete_request_view(request,pk):
 @user_passes_test(is_customer)
 def customer_view_approved_request_view(request):
     customer=models.Customer.objects.get(user_id=request.user.id)
-    enquiries=models.Request.objects.all().filter(customer_id=customer.id).exclude(status='Pending')
+    enquiries=models.Request.objects.all().filter(customer_id=customer.id).exclude(status='Ожидание')
     return render(request,'vehicle/customer_view_approved_request.html',{'customer':customer,'enquiries':enquiries})
 
 @login_required(login_url='customerlogin')
 @user_passes_test(is_customer)
 def customer_view_approved_request_invoice_view(request):
     customer=models.Customer.objects.get(user_id=request.user.id)
-    enquiries=models.Request.objects.all().filter(customer_id=customer.id).exclude(status='Pending')
+    enquiries=models.Request.objects.all().filter(customer_id=customer.id).exclude(status='Ожидание')
     return render(request,'vehicle/customer_view_approved_request_invoice.html',{'customer':customer,'enquiries':enquiries})
 
 
@@ -594,7 +597,7 @@ def edit_customer_profile_view(request):
 @user_passes_test(is_customer)
 def customer_invoice_view(request):
     customer=models.Customer.objects.get(user_id=request.user.id)
-    enquiries=models.Request.objects.all().filter(customer_id=customer.id).exclude(status='Pending')
+    enquiries=models.Request.objects.all().filter(customer_id=customer.id).exclude(status='Ожидание')
     return render(request,'vehicle/customer_invoice.html',{'customer':customer,'enquiries':enquiries})
 
 
@@ -612,7 +615,7 @@ def customer_feedback_view(request):
         return render(request,'vehicle/feedback_sent_by_customer.html',{'customer':customer})
     return render(request,'vehicle/customer_feedback.html',{'feedback':feedback,'customer':customer})
 #============================================================================================
-# CUSTOMER RELATED views END
+# КОНЕЦ просмотров, СВЯЗАННЫХ С КЛИЕНТАМИ
 #============================================================================================
 
 
@@ -621,7 +624,7 @@ def customer_feedback_view(request):
 
 
 #============================================================================================
-# MECHANIC RELATED views start
+# Запуск представлений, СВЯЗАННЫХ С МЕХАНИКАМИ
 #============================================================================================
 
 
@@ -629,9 +632,9 @@ def customer_feedback_view(request):
 @user_passes_test(is_mechanic)
 def mechanic_dashboard_view(request):
     mechanic=models.Mechanic.objects.get(user_id=request.user.id)
-    work_in_progress=models.Request.objects.all().filter(mechanic_id=mechanic.id,status='Repairing').count()
-    work_completed=models.Request.objects.all().filter(mechanic_id=mechanic.id,status='Repairing Done').count()
-    new_work_assigned=models.Request.objects.all().filter(mechanic_id=mechanic.id,status='Approved').count()
+    work_in_progress=models.Request.objects.all().filter(mechanic_id=mechanic.id,status='В ремонте').count()
+    work_completed=models.Request.objects.all().filter(mechanic_id=mechanic.id,status='Ремонт завершен').count()
+    new_work_assigned=models.Request.objects.all().filter(mechanic_id=mechanic.id,status='Утверждено').count()
     dict={
     'work_in_progress':work_in_progress,
     'work_completed':work_completed,
@@ -694,7 +697,7 @@ def mechanic_feedback_view(request):
 @user_passes_test(is_mechanic)
 def mechanic_salary_view(request):
     mechanic=models.Mechanic.objects.get(user_id=request.user.id)
-    workdone=models.Request.objects.all().filter(mechanic_id=mechanic.id).filter(Q(status="Repairing Done") | Q(status="Released"))
+    workdone=models.Request.objects.all().filter(mechanic_id=mechanic.id).filter(Q(status="Ремонт завершен") | Q(status="Выпущено"))
     return render(request,'vehicle/mechanic_salary.html',{'workdone':workdone,'mechanic':mechanic})
 
 @login_required(login_url='mechaniclogin')
@@ -728,15 +731,20 @@ def edit_mechanic_profile_view(request):
 
 
 #============================================================================================
-# MECHANIC RELATED views start
+# Запуск представлений, СВЯЗАННЫХ С МЕХАНИКОМ
 #============================================================================================
 
 
 
 
-# for aboutus and contact
+# для получения дополнительной информации и контактов
 def aboutus_view(request):
     return render(request,'vehicle/aboutus.html')
+
+
+def send_mail(param, message, EMAIL_HOST_USER, EMAIL_RECEIVING_USER, fail_silently):
+    pass
+
 
 def contactus_view(request):
     sub = forms.ContactusForm()
@@ -749,3 +757,8 @@ def contactus_view(request):
             send_mail(str(name)+' || '+str(email),message,settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently = False)
             return render(request, 'vehicle/contactussuccess.html')
     return render(request, 'vehicle/contactus.html', {'form':sub})
+
+def print_enquiries_view(request):
+    # Получение данных из модели, связанных с текущим пользователем
+    enquiries = models.Request.objects.filter(customer=request.user.customer)
+    return render(request, 'vehicle/print_enquiries.html', {'enquiries': enquiries})

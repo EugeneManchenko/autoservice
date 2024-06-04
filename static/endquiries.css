@@ -1,0 +1,15 @@
+.my-table {
+    border-collapse: collapse; /* Объединение границ ячеек */
+    width: 100%;
+    border: 1px solid #ddd; /* Граница таблицы */
+}
+
+.my-table th, .my-table td {
+    border: 1px solid #ddd; /* Граница ячеек */
+    padding: 8px; /* Отступ внутри ячеек */
+    text-align: left;
+}
+
+.my-table th {
+    background-color: #f2f2f2; /* Цвет фона заголовков */
+}

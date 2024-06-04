@@ -1,52 +1,53 @@
 {% extends 'vehicle/customerbase.html' %}
 {% block content %}
 
-	<!-- main content -->
-	<div class="wrapper">
+<div class="wrapper">
+    <!-- Начало таблицы -->
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 style="color: red; text-align: center;">Заявки в обработке</h3>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Регистрационный номер</th>
+                                <th>Марка</th>
+                                <th>Модель</th>
+                                <th>VIN</th>
+                                <th>Пробег</th>
+                                <th>Описание проблемы</th>
+                                <th>Дата заявки</th>
+                                <th>Статус</th>
+                                <th>Удалить заявку</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for enq in enquiries %}
+                            <tr>
+                                <td>{{ enq.vehicle_name }}</td>
+                                <td>{{ enq.vehicle_brand }}</td>
+                                <td>{{ enq.vehicle_model }}</td>
+                                <td>{{ enq.vehicle_no }}</td>
+                                <td>{{ enq.mileage }}</td>
+                                <td>{{ enq.problem_description }}</td>
+                                <td>{{ enq.date }}</td>
+                                <td>{{ enq.status }}</td>
+                                <td><a style="color: blue; text-decoration: none; font-size: 25px;"
+                                        href="{% url 'customer-delete-request' enq.id %}">✘</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Конец таблицы -->
+    <br>
+    <button onclick="window.location.href = '/print_enquiries';">Распечатать</button>
+</div>
 
-<!-- ****** table  start ********** -->
-		<div class="row">
-			<div class="col-12 col-m-12 col-sm-12">
-				<div class="card">
-					<div class="card-header">
-						<h3 style="color:red; text-align:center" >Pending Request & Delete
-						</h3>
-
-					</div>
-					<div class="card-content">
-						<table>
-							<thead>
-                <tr>
-                  <th>Vehicle Name</th>
-                  <th>Category</th>
-                  <th>Vehicle Number</th>
-                  <th>Problem Description</th>
-                  <th>Enquiry Date</th>
-                  <th>Status</th>
-								  <th>Delete Enquiry</th>
-                </tr>
-							</thead>
-							<tbody>
-                {% for enq in enquiries %}
-                <tr>
-                  <td>{{enq.vehicle_name}}</td>
-                  <td>{{enq.category}}</td>
-                  <td>{{enq.vehicle_no}}</td>
-                  <td>{{enq.problem_description}}</td>
-                  <td>{{enq.date}}</td>
-                  <td>{{enq.status}}</td>
-                  <td><a style="color:blue; text-decoration:none;font-size:25px;"href="{% url 'customer-delete-request' enq.id  %}">&#10008;</a></td>
-                </tr>
-                {% endfor %}
-
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-<!-- ****** table start ********** -->
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	</div>
-	<!-- end main content -->
 {% endblock content %}

@@ -1,52 +1,51 @@
 {% extends 'vehicle/customerbase.html' %}
 {% block content %}
 
-	<!-- main content -->
-	<div class="wrapper">
+<div class="wrapper">
 
-<!-- ****** table  start ********** -->
-		<div class="row">
-			<div class="col-12 col-m-12 col-sm-12">
-				<div class="card">
-					<div class="card-header">
-						<h3 style="color:red; text-align:center" >Approved Request Invoice
-						</h3>
+    <!-- ****** table  start ********** -->
+    <div class="row">
+        <div class="col-12 col-m-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 style="color:red; text-align:center">Заказ-наряд
+                    </h3>
 
-					</div>
-					<div class="card-content">
-						<table>
-							<thead>
-                <tr>
-                  <th>Vehicle Name</th>
+                </div>
+                <div class="card-content">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Регистрационный номер</th>
 
-                  <th>Vehicle Number</th>
+                            <th>VIN</th>
 
-                  <th>Enquiry Date</th>
-                  <th>Status</th>
-                  <th>Cost</th>
-                </tr>
-							</thead>
-							<tbody>
-                {% for enq in enquiries %}
-                <tr>
-                  <td>{{enq.vehicle_name}}</td>
+                            <th>Дата</th>
+                            <th>Статус</th>
+                            <th>Стоимость</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for enq in enquiries %}
+                        <tr>
+                            <td>{{enq.vehicle_name}}</td>
 
-                  <td>{{enq.vehicle_no}}</td>
+                            <td>{{enq.vehicle_no}}</td>
 
-                  <td>{{enq.date}}</td>
-                  <td>{{enq.status}}</td>
-                  <td>{{enq.cost}}</td>
-                  </tr>
-                {% endfor %}
+                            <td>{{enq.date}}</td>
+                            <td>{{enq.status}}</td>
+                            <td>{{enq.cost}}</td>
+                        </tr>
+                        {% endfor %}
 
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-<!-- ****** table start ********** -->
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	</div>
-	<!-- end main content -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ****** конец таблицы ********** -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
 {% endblock content %}
